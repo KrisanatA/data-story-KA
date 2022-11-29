@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Krisanat Anukarnsakulchularp">
+<meta name="dcterms.date" content="2022-10-18">
+
+<title>The Analysis of the Average Tuition fee in the U.S. over time.</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="01-data-story_files/libs/clipboard/clipboard.min.js"></script>
+<script src="01-data-story_files/libs/quarto-html/quarto.js"></script>
+<script src="01-data-story_files/libs/quarto-html/popper.min.js"></script>
+<script src="01-data-story_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="01-data-story_files/libs/quarto-html/anchor.min.js"></script>
+<link href="01-data-story_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="01-data-story_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="01-data-story_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="01-data-story_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="01-data-story_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+<script src="01-data-story_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="01-data-story_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="01-custom.css">
+</head>
+
+<body>
+
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">The Analysis of the Average Tuition fee in the U.S. over time.</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Krisanat Anukarnsakulchularp </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 18, 2022</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#why-should-you-care" id="toc-why-should-you-care" class="nav-link active" data-scroll-target="#why-should-you-care">Why should you care</a></li>
+  <li><a href="#data-description" id="toc-data-description" class="nav-link" data-scroll-target="#data-description">Data description</a></li>
+  <li><a href="#overall-look-at-the-average-tuition-fee-in-the-u.s." id="toc-overall-look-at-the-average-tuition-fee-in-the-u.s." class="nav-link" data-scroll-target="#overall-look-at-the-average-tuition-fee-in-the-u.s.">Overall look at the Average Tuition fee in the U.S.</a></li>
+  <li><a href="#now-lets-look-at-the-top-5-states-and-discover-why-that-could-be-the-case." id="toc-now-lets-look-at-the-top-5-states-and-discover-why-that-could-be-the-case." class="nav-link" data-scroll-target="#now-lets-look-at-the-top-5-states-and-discover-why-that-could-be-the-case.">Now let’s look at the top 5 states and discover why that could be the case.</a></li>
+  <li><a href="#what-state-have-lowest-tuition-fee" id="toc-what-state-have-lowest-tuition-fee" class="nav-link" data-scroll-target="#what-state-have-lowest-tuition-fee">What state have lowest tuition fee?</a></li>
+  <li><a href="#what-does-this-mean" id="toc-what-does-this-mean" class="nav-link" data-scroll-target="#what-does-this-mean">What does this mean?</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div class="cell">
+<details>
+<summary>Show library use in this analysis</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gganimate)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(transformr)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gifski)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(usmap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="why-should-you-care" class="level1">
+<h1>Why should you care</h1>
+<p>According to <span class="citation" data-cites="ripley_2018">Ripley (<a href="#ref-ripley_2018" role="doc-biblioref">2018</a>)</span>, the cost of higher education in the U.S. is higher than in other countries. It is always the case that the tuition fee is high, so <strong>why does this happen?</strong></p>
+<p>In this analysis, we will go through the average tuition fees for each state in the U.S. over time and how it differs for each state. We will try to find out why some states may have higher tuition costs than others.</p>
+</section>
+<section id="data-description" class="level1">
+<h1>Data description</h1>
+<p>This data set contains information about the average tuition fees in the U.S. This was obtained from github by <span class="citation" data-cites="tidytuesday">Mock (<a href="#ref-tidytuesday" role="doc-biblioref">2022</a>)</span>, where the link to the dataset is <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2018/2018-04-02/us_avg_tuition.xlsx">here</a>.</p>
+<ul>
+<li><p>State: This contains the 50 states in the United states of America</p></li>
+<li><p>Year: The average tuition fees from 2004 to 2015 (12 columns)</p></li>
+</ul>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Inflation is not taken into account for this analysis.</p>
+</div>
+</div>
+</section>
+<section id="overall-look-at-the-average-tuition-fee-in-the-u.s." class="level1">
+<h1>Overall look at the Average Tuition fee in the U.S.</h1>
+<div class="cell">
+<details>
+<summary>Coded needs to clean the data</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>tuition <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/us_avg_tuition.xlsx"</span>))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>tuitionc <span class="ot">&lt;-</span> tuition <span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>State,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"avg_tuition"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">avg_tuition =</span> <span class="fu">round</span>(avg_tuition, <span class="dv">2</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">year =</span> <span class="fu">as.numeric</span>(<span class="fu">str_remove</span>(year, <span class="st">"</span><span class="sc">\\</span><span class="st">-(</span><span class="sc">\\</span><span class="st">d+)"</span>)),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">abb =</span> State) <span class="sc">%&gt;%</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(abb, <span class="at">.after =</span> State) <span class="sc">%&gt;%</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">state =</span> State)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>tuitionc<span class="sc">$</span>abb <span class="ot">&lt;-</span> state.abb[<span class="fu">match</span>(tuitionc<span class="sc">$</span>abb, state.name)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><a name="ani-plot" href=""></a></p>
+<div class="cell">
+<details>
+<summary>Coded need to create the animate map</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> <span class="fu">plot_usmap</span>(<span class="at">data =</span> tuitionc, <span class="at">values =</span> <span class="st">"avg_tuition"</span>) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_continuous</span>(<span class="at">low =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"red"</span>, <span class="at">name =</span> <span class="st">"Average tuition"</span>, <span class="at">label =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average tuition in {as.integer(frame_time)}"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"The average tuition fees over time in the U.S."</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transition_time</span>(year)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>num_years <span class="ot">&lt;-</span> <span class="fu">max</span>(tuitionc<span class="sc">$</span>year) <span class="sc">-</span> <span class="fu">min</span>(tuitionc<span class="sc">$</span>year) <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>anim <span class="ot">&lt;-</span> <span class="fu">animate</span>(plot, <span class="at">nframes =</span> num_years, <span class="at">fps =</span> <span class="dv">3</span>, <span class="at">renderer =</span> <span class="fu">gifski_renderer</span>())</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>anim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="01-data-story_files/figure-html/ani-plot-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Coded need to create the table</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tuitionc <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2010</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(state, avg_tuition) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_tuition)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"State"</span> <span class="ot">=</span> <span class="st">"state"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Average tuition (USD)"</span> <span class="ot">=</span> <span class="st">"avg_tuition"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">"html"</span>, <span class="at">align =</span> <span class="st">'lc'</span>, <span class="at">caption =</span> <span class="st">"Top 5 highest average tuition in 2010"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> F, <span class="at">position =</span> <span class="st">"float_left"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>tuitionc <span class="sc">%&gt;%</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2015</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(state, avg_tuition) <span class="sc">%&gt;%</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_tuition)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"State"</span> <span class="ot">=</span> <span class="st">"state"</span>,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Average tuition (USD)"</span> <span class="ot">=</span> <span class="st">"avg_tuition"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">"html"</span>, <span class="at">align =</span> <span class="st">'lc'</span>, <span class="at">caption =</span> <span class="st">"Top 5 highest average tuition in 2015"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> F, <span class="at">position =</span> <span class="st">"right"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="tbl-high" class="tbl-parent quarto-layout-panel anchored">
+<div class="panel-caption table-caption">
+<p>Table 1: Top 5 highest average tuition in U.S.</p>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell-output-display">
+<div id="tbl-high-1" data-ref-parent="tbl-high" class="anchored">
+
+<table class="table" style="width: auto !important; float: left; margin-right: 10px;">
+<caption>(a) Top 5 highest average tuition in 2010</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> State </th>
+   <th style="text-align:center;"> Average tuition (USD) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Vermont </td>
+   <td style="text-align:center;"> 13655.14 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> New Hampshire </td>
+   <td style="text-align:center;"> 13077.14 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> New Jersey </td>
+   <td style="text-align:center;"> 12752.02 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Pennsylvania </td>
+   <td style="text-align:center;"> 12403.91 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Illinois </td>
+   <td style="text-align:center;"> 12007.63 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell-output-display">
+<div id="tbl-high-2" data-ref-parent="tbl-high" class="anchored">
+
+<table class="table" style="width: auto !important; margin-right: 0; margin-left: auto">
+<caption>(b) Top 5 highest average tuition in 2015</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> State </th>
+   <th style="text-align:center;"> Average tuition (USD) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> New Hampshire </td>
+   <td style="text-align:center;"> 15159.90 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Vermont </td>
+   <td style="text-align:center;"> 14993.03 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Pennsylvania </td>
+   <td style="text-align:center;"> 13394.78 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> New Jersey </td>
+   <td style="text-align:center;"> 13303.42 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Illinois </td>
+   <td style="text-align:center;"> 13189.10 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>From the <a href="#ani-plot">Animate plot</a>, the average tuition fee has been increasing, while the top right of the U.S map has seen to have a high average tuition fee since 2004. If we look at the <a href="#tbl-high">Table&nbsp;1</a>, Vermont state had the highest average tuition fee in <a href="#tbl-high-1">Table&nbsp;1 (a)</a>, while New Hampshire had the highest in <a href="#tbl-high-2">Table&nbsp;1 (b)</a>. The top 5 states are the same for both 2010 and 2015. In the next section, we will take a look at a possible reason for this.</p>
+</section>
+<section id="now-lets-look-at-the-top-5-states-and-discover-why-that-could-be-the-case." class="level1">
+<h1>Now let’s look at the top 5 states and discover why that could be the case.</h1>
+<p>The state that we will be looking at in this section are the following:</p>
+<ul>
+<li>Vermont</li>
+<li>New Hampshire</li>
+<li>Pennsylvania</li>
+<li>New Jersey</li>
+<li>Illinois</li>
+</ul>
+<p>In the U.S., most public universities will have state funding which will allow a student in the U.S. to pay the fee at a lower price. However, this is different from state to state. New Hampshire state following the great recession in 2007-2009 has affected the state budget, in turn increasing the tuition fees for the student. It is the same for the university in Vermont. Now we can see that the main issue here is state funding.</p>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The state funding is part of the Federal grants.</p>
+<p>According to <span class="citation" data-cites="office_federal_nodate">Office (<a href="#ref-office_federal_nodate" role="doc-biblioref">2022</a>)</span>, Federal grants help state and local governments finance many public services. But agencies must ensure effective management and oversight of these grants.</p>
+<p>The federal government awards hundreds of billions of dollars in grants to state and local governments each year. These grants help finance a broad range of services, including health care, education, social services, infrastructure, and public safety.</p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Coded need to create the graph</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tuitionc <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Vermont"</span>, <span class="st">"New Hampshire"</span>, <span class="st">"Pennsylvania"</span>, <span class="st">"New Jersey"</span>, <span class="st">"Illinois"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> avg_tuition, <span class="at">colour =</span> state, <span class="at">group =</span> state)) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Year"</span>, <span class="at">y =</span> <span class="st">"Average tuition (USD)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-plot" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="01-data-story_files/figure-html/fig-plot-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 1: The trend of the average tuition fees for the following states; Vermont, New Hampshire, Pennsylvania, New Jersey, Illinois.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>From the <a href="#fig-plot">Figure&nbsp;1</a>, we can see that the average tuition fee has been increasing over time. New Hampshire state has had a skyrocketing fee since the great recession. According to <span class="citation" data-cites="redfield_new_2019">Redfield (<a href="#ref-redfield_new_2019" role="doc-biblioref">2019</a>)</span>, in 2012, the state funding for higher education got cut by half. We can see this in the <a href="#fig-plot">Figure&nbsp;1</a>, where the average tuition fee is at its highest in 2012.</p>
+</section>
+<section id="what-state-have-lowest-tuition-fee" class="level1">
+<h1>What state have lowest tuition fee?</h1>
+<div class="cell">
+<details>
+<summary>Coded need to create the table</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tuitionc <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2015</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(state, avg_tuition) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(avg_tuition) <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"State"</span> <span class="ot">=</span> <span class="st">"state"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Average tuition (USD)"</span> <span class="ot">=</span> <span class="st">"avg_tuition"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">"html"</span>, <span class="at">aligh =</span> <span class="st">'lc'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="tbl-low" class="tbl-parent quarto-layout-panel anchored">
+<div class="panel-caption table-caption">
+<p>Table 2: Top 5 lowest average tuition in the U.S.</p>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div class="cell-output-display">
+<div id="tbl-low-1" data-ref-parent="tbl-low" class="anchored">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>(a) Top 5 lowest average tuition in 2015</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> State </th>
+   <th style="text-align:right;"> Average tuition (USD) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Wyoming </td>
+   <td style="text-align:right;"> 4891.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Montana </td>
+   <td style="text-align:right;"> 6351.08 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> New Mexico </td>
+   <td style="text-align:right;"> 6354.52 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Florida </td>
+   <td style="text-align:right;"> 6360.16 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Utah </td>
+   <td style="text-align:right;"> 6362.68 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>From the <a href="#tbl-low">Table&nbsp;2</a>, the state with the lowest average tuition fees in 2015 is Wyoming. According to the <span class="citation" data-cites="crotty_wyoming_nodate">Crotty (<a href="#ref-crotty_wyoming_nodate" role="doc-biblioref">2014</a>)</span>, the Wyoming state government underwrites the cost of public education to the tune of $15,000 per fully enrolled student per year. While the Granite state college only allocates $2,482 of spending per student per year. We can now see the significance of state funding on the average tuition fees in the U.S.</p>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Granite state college is part of the University System of New Hampshire</p>
+</div>
+</div>
+</section>
+<section id="what-does-this-mean" class="level1">
+<h1>What does this mean?</h1>
+<p>In the U.S., state funding does influence the average tuition fee, as this fee depends on the federal grant allocated to the education sector. If the state wants to attract more students, it should focus more on the number of federal grants given to the education sector. We can see that the state that has done this well is Wyoming, while New Hampshire state has not done well in this part. There are also other factors like university ranking and the environment around the university that students are looking for when choosing where they want to go. It means that not only that the state has to allocate resource to the education sector, but they also should focus on improving the quality of life in the state. For example, make it safer to live in the state.</p>
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
+<div id="ref-ggthemes" class="csl-entry" role="doc-biblioentry">
+Arnold, J. B. (2021). <em>Ggthemes: Extra themes, scales and geoms for ’ggplot2’</em>. Retrieved from <a href="https://CRAN.R-project.org/package=ggthemes">https://CRAN.R-project.org/package=ggthemes</a>
+</div>
+<div id="ref-crotty_wyoming_nodate" class="csl-entry" role="doc-biblioentry">
+Crotty, J. M. (2014). Wyoming <span>Has</span> <span>Lowest</span> <span>College</span> <span>Tuition</span> <span>In</span> <span>America</span>. Retrieved from <a href="https://www.forbes.com/sites/jamesmarshallcrotty/2014/12/31/wyoming-has-the-lowest-college-tuition-in-america-and-why-that-really-matters/">https://www.forbes.com/sites/jamesmarshallcrotty/2014/12/31/wyoming-has-the-lowest-college-tuition-in-america-and-why-that-really-matters/</a>
+</div>
+<div id="ref-usmap" class="csl-entry" role="doc-biblioentry">
+Di Lorenzo, P. (2022). <em>Usmap: US maps including alaska and hawaii</em>. Retrieved from <a href="https://CRAN.R-project.org/package=usmap">https://CRAN.R-project.org/package=usmap</a>
+</div>
+<div id="ref-tidytuesday" class="csl-entry" role="doc-biblioentry">
+Mock, T. (2022). <em>Tidy tuesday: A weekly data project aimed at the r ecosystem</em>. Retrieved from <a href="https://github.com/rfordatascience/tidytuesday">https://github.com/rfordatascience/tidytuesday</a>
+</div>
+<div id="ref-office_federal_nodate" class="csl-entry" role="doc-biblioentry">
+Office, U. S. G. A. (2022). <em>Federal <span>Grants</span> to <span>State</span> and <span>Local</span> <span>Governments</span></em>. Retrieved from <a href="https://www.gao.gov/federal-grants-state-and-local-governments">https://www.gao.gov/federal-grants-state-and-local-governments</a>
+</div>
+<div id="ref-gifski" class="csl-entry" role="doc-biblioentry">
+Ooms, J. (2022). <em>Gifski: Highest quality GIF encoder</em>. Retrieved from <a href="https://CRAN.R-project.org/package=gifski">https://CRAN.R-project.org/package=gifski</a>
+</div>
+<div id="ref-transformr" class="csl-entry" role="doc-biblioentry">
+Pedersen, T. L. (2022). <em>Transformr: Polygon and path transformations</em>. Retrieved from <a href="https://CRAN.R-project.org/package=transformr">https://CRAN.R-project.org/package=transformr</a>
+</div>
+<div id="ref-gganimate" class="csl-entry" role="doc-biblioentry">
+Pedersen, T. L., &amp; Robinson, D. (2022). <em>Gganimate: A grammar of animated graphics</em>. Retrieved from <a href="https://CRAN.R-project.org/package=gganimate">https://CRAN.R-project.org/package=gganimate</a>
+</div>
+<div id="ref-redfield_new_2019" class="csl-entry" role="doc-biblioentry">
+Redfield, M. (2019). New <span>Hampshire</span> <span>Trails</span> in <span>Higher</span> <span>Education</span> <span>Funding</span>. Retrieved from <a href="https://nhfpi.org/blog/new-hampshire-trails-in-higher-education-funding/">https://nhfpi.org/blog/new-hampshire-trails-in-higher-education-funding/</a>
+</div>
+<div id="ref-ripley_2018" class="csl-entry" role="doc-biblioentry">
+Ripley, A. (2018). Why is college in america so expensive? Atlantic Media Company. Retrieved from <a href="https://www.theatlantic.com/education/archive/2018/09/why-is-college-so-expensive-in-america/569884/">https://www.theatlantic.com/education/archive/2018/09/why-is-college-so-expensive-in-america/569884/</a>
+</div>
+<div id="ref-ggplot2" class="csl-entry" role="doc-biblioentry">
+Wickham, H. (2016). <em>ggplot2: Elegant graphics for data analysis</em>. Springer-Verlag New York. Retrieved from <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>
+</div>
+<div id="ref-tidyverse" class="csl-entry" role="doc-biblioentry">
+Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D., François, R., … Yutani, H. (2019). Welcome to the <span class="nocase">tidyverse</span>. <em>Journal of Open Source Software</em>, <em>4</em>(43), 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>
+</div>
+<div id="ref-readxl" class="csl-entry" role="doc-biblioentry">
+Wickham, H., &amp; Bryan, J. (2022). <em>Readxl: Read excel files</em>. Retrieved from <a href="https://CRAN.R-project.org/package=readxl">https://CRAN.R-project.org/package=readxl</a>
+</div>
+<div id="ref-kableExtra" class="csl-entry" role="doc-biblioentry">
+Zhu, H. (2021). <em>kableExtra: Construct complex table with ’kable’ and pipe syntax</em>. Retrieved from <a href="https://CRAN.R-project.org/package=kableExtra">https://CRAN.R-project.org/package=kableExtra</a>
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,14 @@
+.quarto-title-meta {
+  background-color: #eb6864;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.quarto-title-banner .quarto-title .title, .quarto-title-meta-heading, .quarto-title-meta-contents {
+  color: #ffffffb3;
+}
+
+h1, h2, strong, ::marker, .callout.callout-style-simple>div.callout-header, details>summary {
+   color: #eb6864;
+}
+
